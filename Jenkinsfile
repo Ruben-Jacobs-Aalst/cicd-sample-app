@@ -1,7 +1,8 @@
 node {
     stage('Preparation') {
         catchError(buildResult: 'SUCCESS') {
-            sh 'docker rm -f samplerunning || true'
+            sh 'docker stop samplerunning || true'
+            sh 'docker rm samplerunning || true'
         }
     }
     stage('Build') {
